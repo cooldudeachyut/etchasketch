@@ -51,7 +51,7 @@ function gridFill() {
 	sheet.innerHTML = ".grid-element{ box-sizing:border-box; background-color:rgb(255, 255, 255); width:"+side+"px; height:"+side+"px;}";
 	document.body.appendChild(sheet);
 
-	for (let i = 1; i <= Math.pow(600/side,2); i++)
+	for (let i = 1; i <= Math.pow(Math.floor(600/side),2); i++)
 	{
 		let gridElem = document.createElement("div");
 		gridElem.classList.add("grid-element");
