@@ -2,15 +2,46 @@ let grid = document.getElementById("grid-container");
 
 let side = 10;
 let color = "rgb(0,0,0)";
+let rainbow_flag = 0;
 
-let changeToErase = (event) => color = "rgb(255,255,255)";
+function randomColor(){
+	let indicator = Math.floor(Math.random() * 7);
 
-let changeToBlack = (event) => color = "rgb(0,0,0)";
+	if (indicator === 0)
+		return "#ff0000";
+	if (indicator === 1)
+		return "#ffa500";
+	if (indicator === 2)
+		return "#ffff00";
+	if (indicator === 3)
+		return "#008000";
+	if (indicator === 4)
+		return "#0000ff";
+	if (indicator === 5)
+		return "#4b0082";
+	if (indicator === 6)
+		return "#ee82ee";
+}
 
-let changeToRainbow = (event) => color = "rgb(236,74,59)";
+let changeToErase = (event) => {
+	rainbow_flag = 0;
+	color = "rgb(255,255,255)";
+}
+
+let changeToBlack = (event) => {
+	rainbow_flag = 0;
+	color = "rgb(0,0,0)";
+}
+
+let changeToRainbow = (event) => rainbow_flag = 1;
 
 let changeColor = (event) => {
-	event.target.setAttribute("style", "background-color:"+color+";");
+	if (rainbow_flag === 0)
+		event.target.setAttribute("style", "background-color:"+color+";");
+	else
+		{
+			event.target.setAttribute("style", "background-color:"+randomColor()+";");
+		}
 }
 
 function gridFill() {
